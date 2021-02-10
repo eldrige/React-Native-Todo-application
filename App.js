@@ -11,28 +11,24 @@ export default function App() {
     { text: 'play on the switch', key: '3' },
   ]);
 
-  const pressHandler = key => {
-    setTodo(prepTodo => {
-      return prepTodo.filter(todos => todos.key != key);
+  const pressHandler = (key) => {
+    setTodo((prevTodo) => {
+      return prevTodo.filter((todos) => todos.key != key);
     });
   };
 
   const submit = (text) => {
-
     setTodo((prevtodo) => {
-      return[
-        {text: text, key:Math.random().toString()},
-        ...prevtodo
-      ];
-    })
-  }
+      return [{ text: text, key: Math.random().toString() }, ...prevtodo];
+    });
+  };
 
   return (
     <View style={styles.container}>
       {/* header*/}
       <Header />
       <View style={styles.content}>
-        <AddTodo submit={submit}/>
+        <AddTodo submit={submit} />
         <View style={styles.list}>
           <FlatList
             data={todo}
